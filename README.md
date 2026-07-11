@@ -1,7 +1,7 @@
 <h1 align="center">BPB Panel</h1>
 
 ### 🌏 Readme in [Farsi](README_fa.md)
-
+دوتا خط به ‏نسخه پنل  4.2.3 BPB اضافه کردم که فقط این ایموجی 💦 تف رو تغییر میده . تو اطرافیانم خیلی خوب نگاه نمیکنن به این ایموجی.اگر شما هم رنج میبرید استفاده کنید
 <p align="center">
 <img src="docs/assets/Capture.PNG">
 

@@ -4,7 +4,6 @@
 
 <p align="center">
 <<<<<<< HEAD
-  <img src="docs/assets/images/panel-overview.jpg">
 =======
   <img src="docs/assets/Capture.PNG">
 >>>>>>> aee612dc9d4645fe11307c08222269b842a43876

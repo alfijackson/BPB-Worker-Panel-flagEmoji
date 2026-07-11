@@ -3,7 +3,11 @@ import { buildDNS } from './dns';
 import { buildRoutingRules } from './routing';
 import { buildChainOutbound, buildUrlTest, buildWarpOutbound, buildWebsocketOutbound } from './outbounds.js';
 import { Outbound, WireguardEndpoint, Config } from '#types/sing-box';
+<<<<<<< HEAD
 import { getConfigAddresses, generateRemark, getAddressCountryFlags, isHttps, getProtocols } from '@utils';
+=======
+import { getConfigAddresses, generateRemark, isHttps, getProtocols } from '@utils';
+>>>>>>> aee612dc9d4645fe11307c08222269b842a43876
 import { buildMixedInbound, tun } from './inbounds';
 
 async function buildConfig(
@@ -89,7 +93,10 @@ export async function getSbCustomConfig(isFragment: boolean): Promise<Response> 
         hosts.unshift(upstreamServer);
     }
 
+<<<<<<< HEAD
     const addressCountryFlags = await getAddressCountryFlags(hosts);
+=======
+>>>>>>> aee612dc9d4645fe11307c08222269b842a43876
     const proxyTags: string[] = [];
     const chainTags: string[] = [];
     const outbounds: Outbound[] = [];
@@ -102,7 +109,11 @@ export async function getSbCustomConfig(isFragment: boolean): Promise<Response> 
             for (const host of hosts) {
                 if ((port === upstreamPort) !== (host === upstreamServer)) continue;
 
+<<<<<<< HEAD
                 const tag = generateRemark(protocolIndex, port, host, protocol, isFragment, false, addressCountryFlags);
+=======
+                const tag = generateRemark(protocolIndex, port, host, protocol, isFragment, false);
+>>>>>>> aee612dc9d4645fe11307c08222269b842a43876
                 const outbound = buildWebsocketOutbound(protocol, tag, host, port, isFragment);
 
                 outbounds.push(outbound);
@@ -110,7 +121,11 @@ export async function getSbCustomConfig(isFragment: boolean): Promise<Response> 
                 selectorTags.push(tag);
 
                 if (isChain) {
+<<<<<<< HEAD
                     const chainTag = generateRemark(protocolIndex, port, host, protocol, isFragment, true, addressCountryFlags);
+=======
+                    const chainTag = generateRemark(protocolIndex, port, host, protocol, isFragment, true);
+>>>>>>> aee612dc9d4645fe11307c08222269b842a43876
                     const chain = structuredClone(chainProxy);
                     chain.tag = chainTag;
                     chain.detour = tag;
@@ -188,4 +203,8 @@ export async function getSbWarpConfig(request: Request, env: Env): Promise<Respo
             'CDN-Cache-Control': 'no-store'
         }
     });
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> aee612dc9d4645fe11307c08222269b842a43876

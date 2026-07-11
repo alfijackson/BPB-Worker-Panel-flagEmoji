@@ -8,7 +8,11 @@ import { fetchWarpAccounts } from "@warp";
 import { VlOverWSHandler } from "@vless";
 import { TrOverWSHandler } from "@trojan";
 import { base64DecodeUtf8, base64EncodeUtf8, HttpStatus, respond, safeErrorMessage } from "@common";
+<<<<<<< HEAD
 import { generateRemark, generateWsPath, getConfigAddresses, getAddressCountryFlags, randomUpperCase, resolveDNS } from "@utils";
+=======
+import { generateRemark, generateWsPath, getConfigAddresses, randomUpperCase, resolveDNS } from "@utils";
+>>>>>>> aee612dc9d4645fe11307c08222269b842a43876
 import JSZip from "jszip";
 
 export async function handleWebsocket(request: Request): Promise<Response> {
@@ -617,8 +621,11 @@ export async function getURLConfigs() {
         addrs.unshift(upstreamServer);
     }
 
+<<<<<<< HEAD
     const addressCountryFlags = await getAddressCountryFlags(addrs);
 
+=======
+>>>>>>> aee612dc9d4645fe11307c08222269b842a43876
     for (const port of ports) {
         for (const addr of addrs) {
             const isCustomAddr = customCdnAddrs.includes(addr);
@@ -627,13 +634,21 @@ export async function getURLConfigs() {
             if ((port === upstreamPort) !== (addr === upstreamServer)) continue;
 
             if (VLConfigs) {
+<<<<<<< HEAD
                 const remark = generateRemark(proxyIndex, port, addr, _VL_, false, false, addressCountryFlags);
+=======
+                const remark = generateRemark(proxyIndex, port, addr, _VL_, false, false);
+>>>>>>> aee612dc9d4645fe11307c08222269b842a43876
                 const vlConfig = buildConfig(atob('dmxlc3M='), addr, port, host, sni, remark);
                 VLConfs += `${vlConfig}\n`;
             }
 
             if (TRConfigs) {
+<<<<<<< HEAD
                 const remark = generateRemark(proxyIndex, port, addr, _TR_, false, false, addressCountryFlags);
+=======
+                const remark = generateRemark(proxyIndex, port, addr, _TR_, false, false);
+>>>>>>> aee612dc9d4645fe11307c08222269b842a43876
                 const trConfig = buildConfig(atob('dHJvamFu'), addr, port, host, sni, remark);
                 TRConfs += `${trConfig}\n`;
             }
@@ -704,4 +719,8 @@ async function fetchCustomSubs(subs: string[]): Promise<string> {
 function isBase64(str: string): boolean {
     if (!str || str.length % 4 !== 0) return false;
     return /^[A-Za-z0-9+/=\r\n]+$/.test(str);
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> aee612dc9d4645fe11307c08222269b842a43876

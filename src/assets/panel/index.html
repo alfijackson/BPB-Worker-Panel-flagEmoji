@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BPB Panel v__VERSION__</title>
+    <title id="page-title">alfijackson's BPB __VERSION__ Panel</title>
     <link rel="icon" href="/favicon.ico" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet"
@@ -13,11 +13,11 @@
 </head>
 
 <body>
-    <h1>
-        <img class="icon" src="/favicon.ico" alt="BPB Logo"> BPB Panel <span id="panel-version"
+    <h1 id="panel-title">
+        <img class="icon" src="/favicon.ico" alt="Panel Logo"> <span id="panel-name">alfijackson's BPB</span> <span id="panel-version"
             style="font-size: smaller;">
-            v__VERSION__
-        </span>
+            __VERSION__
+        </span> Panel
     </h1>
     <div class="form-container container">
         <h2><span class="material-symbols-rounded">settings</span> Settings</h2>
@@ -1275,6 +1275,28 @@
     <script type="module" defer>
         import { polyfillCountryFlagEmojis } from "https://cdn.skypack.dev/country-flag-emoji-polyfill";
         polyfillCountryFlagEmojis();
+    </script>
+    <script>
+        (() => {
+            const hostname = window.location.hostname;
+            const hostParts = hostname.split('.').filter(Boolean);
+            let workerName = hostParts[0];
+
+            const workersDevIndex = hostParts.findIndex(part => part.toLowerCase() === 'workers');
+            if (workersDevIndex > 0) {
+                workerName = hostParts[workersDevIndex - 1];
+            }
+
+            if (!workerName) return;
+
+            const panelDisplayName = `${workerName}'s BPB`;
+            document.title = `${panelDisplayName} __VERSION__ Panel`;
+
+            const panelNameElement = document.getElementById('panel-name');
+            if (panelNameElement) {
+                panelNameElement.textContent = panelDisplayName;
+            }
+        })();
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script>__SCRIPT__</script>

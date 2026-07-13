@@ -65,7 +65,6 @@ export async function getConfigAddresses(isFragment: boolean): Promise<string[]>
     return addrs.concatIf(!isFragment, customCdnAddrs);
 }
 
-<<<<<<< HEAD
 const remarkEmojis = [
   "🫶","🫰","🫵","🫴","🫷","🫸","🫳","🫲",
   "🫡","🫢","🫣","🫠","🥹","🫥","🫨",
@@ -213,26 +212,17 @@ export async function getAddressCountryFlags(addresses: string[]): Promise<Recor
     return flags;
 }
 
-=======
->>>>>>> aee612dc9d4645fe11307c08222269b842a43876
 export function generateRemark(
     index: number,
     port: number,
     address: string,
     protocol: string,
     isFragment: boolean,
-<<<<<<< HEAD
     isChain: boolean,
     addressCountryFlags: Record<string, string> = {}
 ): string {
     const {
         settings: { customCdnAddrs, upstreamParams: { upstreamServer } },
-=======
-    isChain: boolean
-): string {
-    const {
-        settings: { cleanIPs, customCdnAddrs, upstreamParams: { upstreamServer } },
->>>>>>> aee612dc9d4645fe11307c08222269b842a43876
         dict: { _VL_, _VL_CAP_, _TR_CAP_ }
     } = globalThis;
 
@@ -240,7 +230,6 @@ export function generateRemark(
     const configType = isCustomAddr ? ' C' : isFragment ? ' F' : '';
     const chainSign = isChain ? '🔗 ' : '';
     const protoSign = protocol === _VL_ ? _VL_CAP_ : _TR_CAP_;
-<<<<<<< HEAD
     const remarkEmoji = remarkEmojis[Math.floor(Math.random() * remarkEmojis.length)];
     const normalizedAddress = normalizeIpAddress(address);
     const countryFlag = addressCountryFlags[normalizedAddress];
@@ -249,17 +238,6 @@ export function generateRemark(
     return address === upstreamServer
         ? `${flagSign}-${remarkEmoji}-${chainSign}${protoSign}${configType}-${normalizedAddress}:${port} Upstream Proxy`
         : `${flagSign}-${remarkEmoji}-${chainSign}${protoSign}${configType}-${normalizedAddress}:${port}`;
-=======
-    let addressType;
-
-    cleanIPs.includes(address)
-        ? addressType = 'Clean IP'
-        : addressType = isDomain(address) ? 'Domain' : isIPv4(address) ? 'IPv4' : isIPv6(address) ? 'IPv6' : '';
-
-    return address === upstreamServer
-        ? `💦 ${index} - ${chainSign}${protoSign}${configType} - Upstream Proxy`
-        : `💦 ${index} - ${chainSign}${protoSign}${configType} - ${addressType} : ${port}`;
->>>>>>> aee612dc9d4645fe11307c08222269b842a43876
 }
 
 export function randomUpperCase(str: string): string {
@@ -462,8 +440,4 @@ Array.prototype.concatIf = function <T>(condition: boolean, concat: T | T[]): T[
 Object.prototype.omitEmpty = function <T>(): T | undefined {
     if (Object.keys(this).length === 0) return undefined;
     return this as T;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> aee612dc9d4645fe11307c08222269b842a43876

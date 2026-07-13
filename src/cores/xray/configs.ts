@@ -9,14 +9,10 @@ import {
     buildWarpOutbound,
     buildFreedomOutbound
 } from './outbounds';
-
 import {
     getConfigAddresses,
     generateRemark,
-<<<<<<< HEAD
     getAddressCountryFlags,
-=======
->>>>>>> aee612dc9d4645fe11307c08222269b842a43876
     isDomain,
     isHttps,
     getProtocols,
@@ -268,10 +264,7 @@ export async function getXrCustomConfigs(isFragment: boolean): Promise<Response>
         hosts.unshift(upstreamServer);
     }
 
-<<<<<<< HEAD
     const addressCountryFlags = await getAddressCountryFlags(hosts);
-=======
->>>>>>> aee612dc9d4645fe11307c08222269b842a43876
     const configs: Config[] = [];
     const proxies: Outbound[] = [];
     const chains: Outbound[] = [];
@@ -287,20 +280,12 @@ export async function getXrCustomConfigs(isFragment: boolean): Promise<Response>
                 const proxy = modifyOutbound(outbound, `proxy-${index}`);
                 proxies.push(proxy);
 
-<<<<<<< HEAD
                 const remark = generateRemark(protocolIndex, port, host, protocol, isFragment, false, addressCountryFlags);
-=======
-                const remark = generateRemark(protocolIndex, port, host, protocol, isFragment, false);
->>>>>>> aee612dc9d4645fe11307c08222269b842a43876
                 const config = await buildConfig(remark, [outbound], false, false, false, false, false, [host]);
                 configs.push(config);
 
                 if (chainProxy) {
-<<<<<<< HEAD
                     const remark = generateRemark(protocolIndex, port, host, protocol, isFragment, true, addressCountryFlags);
-=======
-                    const remark = generateRemark(protocolIndex, port, host, protocol, isFragment, true);
->>>>>>> aee612dc9d4645fe11307c08222269b842a43876
                     const chainConfig = await buildConfig(remark, [chainProxy, outbound], false, true, false, false, false, [host]);
                     configs.push(chainConfig);
 

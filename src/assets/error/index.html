@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BPB Panel v__VERSION__</title>
+    <title data-panel-title>__PANEL_NAME__ v__VERSION__</title>
     <link rel="icon" href="/favicon.ico" />
     <style>
         :root {
@@ -55,8 +55,8 @@
 <body>
     <div id="error-container">
         <h1>
-            <img class="icon" src="/favicon.ico" alt="BPB Logo"> BPB Panel <span id="panel-version"
-                style="font-size: smaller;">
+            <img class="icon" src="/favicon.ico" alt="Panel Logo"> <span data-panel-name>__PANEL_NAME__</span>
+            <span id="panel-version" style="font-size: smaller;">
                 v__VERSION__
             </span>
         </h1>
@@ -69,6 +69,15 @@
     </div>
     <script>
         localStorage.getItem('darkMode') === 'enabled' && document.body.classList.add('dark-mode');
+    </script>
+    <script>
+        const panelName = location.hostname || "__PANEL_NAME__";
+        document.querySelectorAll("[data-panel-name]").forEach((element) => {
+            element.textContent = panelName;
+        });
+        document.querySelectorAll("[data-panel-title]").forEach((element) => {
+            element.textContent = `${panelName} v__VERSION__`;
+        });
     </script>
 </body>
 

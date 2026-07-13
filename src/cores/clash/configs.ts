@@ -3,11 +3,7 @@ import { buildDNS } from './dns';
 import { buildRoutingRules, buildRuleProviders } from './routing';
 import { buildChainOutbound, buildUrlTest, buildWarpOutbound, buildWebsocketOutbound } from './outbounds';
 import type { WireguardOutbound, Config, Outbound } from '#types/clash';
-<<<<<<< HEAD
 import { getConfigAddresses, generateRemark, getAddressCountryFlags, getProtocols } from '@utils';
-=======
-import { getConfigAddresses, generateRemark, getProtocols } from '@utils';
->>>>>>> aee612dc9d4645fe11307c08222269b842a43876
 import { sniffer, tun } from './inbounds';
 
 async function buildConfig(
@@ -90,10 +86,7 @@ export async function getClNormalConfig(): Promise<Response> {
         hosts.unshift(upstreamServer);
     }
 
-<<<<<<< HEAD
     const addressCountryFlags = await getAddressCountryFlags(hosts);
-=======
->>>>>>> aee612dc9d4645fe11307c08222269b842a43876
     const proxyTags: string[] = [];
     const chainTags: string[] = [];
     const outbounds: Outbound[] = [];
@@ -105,11 +98,7 @@ export async function getClNormalConfig(): Promise<Response> {
             for (const host of hosts) {
                 if ((port === upstreamPort) !== (host === upstreamServer)) continue;
 
-<<<<<<< HEAD
                 const tag = generateRemark(protocolIndex, port, host, protocol, false, false, addressCountryFlags);
-=======
-                const tag = generateRemark(protocolIndex, port, host, protocol, false, false);
->>>>>>> aee612dc9d4645fe11307c08222269b842a43876
                 const outbound = buildWebsocketOutbound(protocol, tag, host, port);
 
                 if (outbound) {
@@ -118,11 +107,7 @@ export async function getClNormalConfig(): Promise<Response> {
                     outbounds.push(outbound);
 
                     if (isChain) {
-<<<<<<< HEAD
                         const chainTag = generateRemark(protocolIndex, port, host, protocol, false, true, addressCountryFlags);
-=======
-                        const chainTag = generateRemark(protocolIndex, port, host, protocol, false, true);
->>>>>>> aee612dc9d4645fe11307c08222269b842a43876
                         let chain = structuredClone(chainProxy);
                         chain['name'] = chainTag;
                         chain['dialer-proxy'] = tag;
@@ -202,8 +187,4 @@ export async function getClWarpConfig(request: Request, env: Env, isPro: boolean
             'CDN-Cache-Control': 'no-store'
         }
     });
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> aee612dc9d4645fe11307c08222269b842a43876
